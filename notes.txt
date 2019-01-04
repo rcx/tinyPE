@@ -1,0 +1,6 @@
+Weird caveats I discovered (on Win10 x64)
+- there must be at least 0x10 bytes of code at the end of the file no matter what, even if you specify SizeOfImage and SizeOfCode so there would only be like 3 bytes. otherwise windows will refuse to load it
+- it must be 268 bytes or else windows will refuse to load it, regardless of the contents
+- address of first section must be 1000h or greater as you are not allowed to map the null page (for security)
+- if there are more than 0 sections, SectionAlignment and FileAlignment minimum seem to be 1000h and 200h. otherwise they are ok with it being 1 and 1
+- MajorSubsystemVersion has to be 4 or greater
